@@ -299,6 +299,7 @@ async def telltheworld(ctx, type, *, tmsg):
 
 @client.command(pass_context = True)
 async def poll(ctx, *, pmsg):
+	await client.delete_message(ctx.message)
 	await client.say("*Voteaza!*")
 	rmsg = await client.say("%s"%pmsg)
 	await client.add_reaction(rmsg, "👍")
