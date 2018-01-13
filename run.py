@@ -1,5 +1,6 @@
 import discord
 import time
+import os
 import config
 import random
 from config import token, link, prefix, ownerid
@@ -614,4 +615,6 @@ async def unmute(ctx, *, member : discord.Member):
 	await client.say("**%s** Times up...You are Unmuted!"%member.mention)
 
 
-client.run(token)
+if not os.environ.get('TOKEN'):
+    print("no token found!")
+client.run(os.environ.get('TOKEN').strip('"'))
