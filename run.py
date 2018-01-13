@@ -298,12 +298,12 @@ async def telltheworld(ctx, type, *, tmsg):
 		await client.send_message(ctx.message.channel, embed = embed)
 
 @client.command(pass_context = True)
-async def poll(ctx, *, pmsg):
+async def poll(ctx, opt1 = "👍", opt2 = "👎", *, pmsg):
 	await client.delete_message(ctx.message)
 	await client.say("*Voteaza!*")
 	rmsg = await client.say("%s"%pmsg)
-	await client.add_reaction(rmsg, "👍")
-	await client.add_reaction(rmsg, "👎")
+	await client.add_reaction(rmsg, opt1)
+	await client.add_reaction(rmsg, opt2)
 	print("Un nou w.poll!")
 
 @client.command(pass_context = True)       
