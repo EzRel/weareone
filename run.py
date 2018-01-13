@@ -3,7 +3,7 @@ import time
 import os
 import config
 import random
-from config import token, link, prefix, ownerid
+from config import link, prefix, ownerid
 from discord.ext.commands import Bot
 from time import sleep
 from random import randint
