@@ -303,6 +303,7 @@ async def poll(ctx, *, pmsg):
 	rmsg = await client.say("%s"%pmsg)
 	await client.add_reaction(rmsg, "👍")
 	await client.add_reaction(rmsg, "👎")
+	print("Un nou w.poll!")
 
 @client.command(pass_context = True)       
 async def rankcolor(ctx, colour):
