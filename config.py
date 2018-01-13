@@ -1,4 +1,4 @@
-token = 'Mzk5OTQ5MTA0MDY4OTUyMDY0.DTVH_g.e1AIVHv5ok-IGtL1s7qe37bb-W0' #Put Your bots token here
+
 
 prefix = 'w.' #put prefix here
 
