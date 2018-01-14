@@ -250,12 +250,15 @@ async def serverinfo(ctx):
 
 @client.command(pass_context=True)
 async def setgame(ctx, *, topresent):
+	a = 1
 	"""Sets my game (Owner)"""
 	if ctx.message.author.id == (ownerid):
 		message = ctx.message
 		await client.delete_message(message)
 		await client.whisper("Game was set to **{}**!".format(topresent))
-		await client.change_presence(game=discord.Game(name=topresent))
+		while True:
+			await client.change_presence(game=discord.Game(name="%s for %s"%(topresent, a)))
+			a += 1
 
 #Clears The Chat
 
