@@ -279,11 +279,6 @@ async def clear(ctx, number):
 @client.command(pass_context=True)       
 async def tell(ctx, type, *, tmsg):
 	'''Spune lumii mesajele tale prin mine ;)'''
-	"""mgs = []
-	number = 1
-	async for x in client.logs_from(ctx.message.channel, limit = number):
-		mgs.append(x)
-	await client.delete_messages(mgs)"""
 
 	user_roles = [r.name.lower() for r in ctx.message.author.roles]
 
@@ -294,7 +289,7 @@ async def tell(ctx, type, *, tmsg):
 	if type == 'n':
 		await client.say("%s"%tmsg)
 	else:
-		embed = discord.Embed(title = n, description = tmsg, color = 0xFFFFF)
+		embed = discord.Embed(title = type, description = tmsg, color = 0xFFFFF)
 		await client.send_message(ctx.message.channel, embed = embed)
 
 @client.command(pass_context = True)
