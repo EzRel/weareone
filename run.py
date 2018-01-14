@@ -21,7 +21,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-	user_roles = [r.name.lower() for r in ctx.message.author.roles]
+	user_roles = [r.name.lower() for r in message.author.roles]
 
 	if "💰 • HELPERS • 💰" not in user_roles:
 		canlink = 0
