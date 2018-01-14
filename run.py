@@ -24,7 +24,7 @@ async def on_member_join(member):
     channel = discord.utils.get(member.server.channels, name="logs")
     server = member.server
     fmt = '**+** {0.mention} tocmai a intrat in comunitatea **WeAreOne**!'
-f    await client.send_message(channel, fmt.format(member))
+    await client.send_message(channel, fmt.format(member))
 
 @client.event
 async def on_member_remove(member):
