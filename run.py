@@ -385,7 +385,7 @@ async def guild(ctx, option, guildname = "", user: discord.Member = ""):
 					gchatchannel = chn
 					break
 			x = "%s vrea sa intre in guild! Da `w.guild accept %s @%s#----` ca sa intre!"%(ctx.message.author.display_name, guildname, ctx.message.author.name)
-			embed = discord.Embed(title = "Membru nou", description = x, color = 0xFFFFF)
+			embed = discord.Embed(title = "Membru nou", description = x, color = 0x2ecc71)
 			nmemmsg = await client.send_message(gchatchannel, embed = embed)
 			#await client.pin_message(nmemmsg)
 			await client.say("Ai cerut sa intri in %s!"%guildname)
@@ -418,7 +418,7 @@ async def guild(ctx, option, guildname = "", user: discord.Member = ""):
 					gchatchannel = chn
 					break
 			x = "Bine ai venit in guild, %s!"%user.display_name
-			embed = discord.Embed(title = "Membru nou", description = x, color = 0xFFFFF)
+			embed = discord.Embed(title = "Membru nou", description = x, color = 0x2ecc71)
 			nmemmsg = await client.send_message(gchatchannel, embed = embed)
 			#await client.pin_message(nmemmsg)
 			await client.say("Ai intrat in guild-ul %s!"%guildname)
