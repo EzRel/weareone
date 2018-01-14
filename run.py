@@ -20,6 +20,23 @@ async def on_ready():
 	await client.change_presence(game=discord.Game(name='Foloseste w.help!'))
 
 @client.event
+async def on_message(message):
+	user_roles = [r.name.lower() for r in ctx.message.author.roles]
+
+	if "💰 • HELPERS • 💰" not in user_roles:
+		canlink = 0
+	else:
+		canlink = 1
+	
+	if message.content.find("http://") != -1:
+		if canlink == 0:
+			await client.delete_message(message)
+			await client.say("Nu trimite link-uri!")
+	if message.content.find("fuck") != -1 || message.content.find("shit") != -1 || message.content.find("pula") != -1:
+		await client.delete_message(message)
+		await client.say("Nu injura!")
+
+@client.event
 async def on_member_join(member):
     channel = discord.utils.get(member.server.channels, name="logs")
     server = member.server
