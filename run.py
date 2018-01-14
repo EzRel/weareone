@@ -358,7 +358,7 @@ async def guild(ctx, option, guildname = "", user: discord.Member = ""):
 				member = mem
 				await client.add_roles(member, grole)
 				break
-		await client.create_channel(client.get_server('295959610043531264'), "> %s-GUILD"%guildname, type=discord.ChannelType.category)
+		#await client.create_channel(client.get_server('295959610043531264'), "> %s-GUILD"%guildname, type=discord.ChannelType.category)
 		await client.create_channel(client.get_server('295959610043531264'), "%s_voice"%guildname, type=discord.ChannelType.voice)
 		gchatchannel = await client.create_channel(client.get_server('295959610043531264'), "%s_chat"%guildname, type=discord.ChannelType.text)  #"%s [%s]"%(discord.User.name, guildname)
 		await client.send_message(gchatchannel, "Bine ai venit pe guild-ul %s! Daca este primul tau guild, te invitam sa tragi un ochi si pe la #guild_info si #guild_shop ."%guildname)
