@@ -29,13 +29,15 @@ async def on_message(message):
 	else:
 		canlink = 1
 	
-	if message.content.find("discord.gg/") != -1:
-		if canlink == 0:
+	if canlink == 0:
+		if message.content.find("discord.gg/") != -1:
 			await client.send_message(message.channel, "Nu promova alte servere!")
 			await client.delete_message(message)
-	elif message.content.find("http://") != -1 or message.content.find("https://") != -1:
-		if canlink == 0:
+		elif message.content.find("http://") != -1 or message.content.find("https://") != -1:
 			await client.send_message(message.channel, "Nu trimite link-uri!")
+			await client.delete_message(message)
+		elif message.content == message.content.upper():
+			await client.send_message(message.channel, "Nu spama caps lock!")
 			await client.delete_message(message)
 	if message.content.find("fuck") != -1 or message.content.find("shit") != -1 or message.content.find("pula") != -1 or message.content.find("pizda") != -1 or message.content.find("muie") != -1:
 		await client.send_message(message.channel, "Nu injura!")
