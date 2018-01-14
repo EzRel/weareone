@@ -193,6 +193,18 @@ async def havefun(ctx, number = ""):
 	for x in range(1, 100 * int(number)):
 		await client.say("SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM")
 			#SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM
+@client.command(pass_context=True)       
+async def dice(ctx, number = ""):
+	'''Exact ca un zar normal!'''
+	dicemsg = await client.say("Ruleaza...")
+	if number == "":
+		number = randint(1, 6)
+	else:
+		number = int(number)
+	for x in range(1, 5):
+		await client.edit_message(dicemsg, randint(1, 6))
+		sleep(0.2 * x)
+	await client.edit_message(dicemsg, "A picat %s!"%number)
 
 @client.command(pass_context=True)       
 async def tellthenews(ctx, timestosay = "", interval = ""):
