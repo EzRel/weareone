@@ -277,7 +277,7 @@ async def clear(ctx, number):
 	await client.delete_message(deletedm) 
 
 @client.command(pass_context=True)       
-async def telltheworld(ctx, type, *, tmsg):
+async def tell(ctx, type, *, tmsg):
 	'''Spune lumii mesajele tale prin mine ;)'''
 	"""mgs = []
 	number = 1
@@ -294,7 +294,7 @@ async def telltheworld(ctx, type, *, tmsg):
 	if type == 'n':
 		await client.say("%s"%tmsg)
 	else:
-		embed = discord.Embed(title = "Anunt", description = tmsg, color = 0xFFFFF)
+		embed = discord.Embed(title = n, description = tmsg, color = 0xFFFFF)
 		await client.send_message(ctx.message.channel, embed = embed)
 
 @client.command(pass_context = True)
