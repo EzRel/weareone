@@ -289,7 +289,7 @@ async def tell(ctx, type, *, tmsg):
 	if type == 'n':
 		await client.say("%s"%tmsg)
 	else:
-		embed = discord.Embed(title = type, description = tmsg, color = 0xFFFFF)
+		embed = discord.Embed(title = type.replace("%20", " "), description = tmsg, color = 0xFFFFF)
 		await client.send_message(ctx.message.channel, embed = embed)
 
 @client.command(pass_context = True)
