@@ -23,14 +23,18 @@ async def on_ready():
 async def on_message(message):
 	user_roles = [r.name.lower() for r in message.author.roles]
 
-	if "💰 • HELPERS • 💰" not in user_roles:
+	if "helpers" not in user_roles:
 		canlink = 0
 	else:
 		canlink = 1
 	
-	if message.content.find("http://") != -1:
+	if message.content.find("http://") != -1 or message.content.find("https://") != -1:
 		if canlink == 0:
 			await client.send_message(message.channel, "Nu trimite link-uri!")
+			await client.delete_message(message)
+	if message.content.find("discord.gg/") != -1:
+		if canlink == 0:
+			await client.send_message(message.channel, "Nu promova alte servere!")
 			await client.delete_message(message)
 	if message.content.find("fuck") != -1 or message.content.find("shit") != -1 or message.content.find("pula") != -1:
 		await client.delete_message(message)
