@@ -21,6 +21,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+	msgc = message.content.lower()
 	await client.process_commands(message)
 	user_roles = [r.name.lower() for r in message.author.roles]
 
@@ -30,16 +31,16 @@ async def on_message(message):
 		canlink = 1
 	
 	if canlink == 0:
-		if message.content.find("discord.gg/") != -1:
+		if msgc.find("discord.gg/") != -1:
 			await client.send_message(message.channel, "Nu promova alte servere!")
 			await client.delete_message(message)
-		elif message.content.find("http://") != -1 or message.content.find("https://") != -1:
+		elif msgc.find("http://") != -1 or msgc.find("https://") != -1:
 			await client.send_message(message.channel, "Nu trimite link-uri!")
 			await client.delete_message(message)
 		elif message.content == message.content.upper():
 			await client.send_message(message.channel, "\"%s\" ~ Nu spama caps lock!"%message.content.lower())
 			await client.delete_message(message)
-	if message.content.find("fuck") != -1 or message.content.find("shit") != -1 or message.content.find("pula") != -1 or message.content.find("pizda") != -1 or message.content.find("muie") != -1:
+	if msgc.find("fuck") != -1 or msgc.find("shit") != -1 or msgc.find("pula") != -1 or msgc.find("pizda") != -1 or msgc.find("muie") != -1:
 		await client.send_message(message.channel, "Nu injura!")
 		await client.delete_message(message)
 
