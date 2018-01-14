@@ -182,11 +182,11 @@ async def tellthenews(ctx, timestosay = "", interval = ""):
 		await client.say("**ANUNT >>** %s"%currmesg)
 		sleep(interval)
 
-@client.command()
+"""@client.command()
 async def botinvite():
 	'''A Link To Invite This Bot To Your Server!'''
 	await client.say("Uite-te in dm's :wink:")
-	await client.whisper(link)
+	await client.whisper(link)"""
 
 @client.command()
 async def suntnou():
