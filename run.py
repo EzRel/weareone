@@ -408,10 +408,8 @@ async def guild(ctx, option, guildname = "", user: discord.Member = ""):
 			for role in roles:
 				if role.name == "%sGUILD"%guildname:
 					await client.add_roles(member, role)
-					break
 				if role.name == "%sGUILDw"%guildname:
 					await client.remove_roles(member, role)
-					break
 
 			channels = server.channels
 			gchatchannel = None
