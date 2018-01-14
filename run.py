@@ -21,7 +21,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-	await bot.process_commands(message)
+	await client.process_commands(message)
 	user_roles = [r.name.lower() for r in message.author.roles]
 
 	if "helpers" not in user_roles:
