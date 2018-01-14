@@ -37,7 +37,7 @@ async def on_message(message):
 			await client.send_message(message.channel, "Nu trimite link-uri!")
 			await client.delete_message(message)
 		elif message.content == message.content.upper():
-			await client.send_message(message.channel, "Nu spama caps lock!")
+			await client.send_message(message.channel, "\"%s\" ~ Nu spama caps lock!"%message.content.lower())
 			await client.delete_message(message)
 	if message.content.find("fuck") != -1 or message.content.find("shit") != -1 or message.content.find("pula") != -1 or message.content.find("pizda") != -1 or message.content.find("muie") != -1:
 		await client.send_message(message.channel, "Nu injura!")
