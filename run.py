@@ -24,7 +24,7 @@ async def on_member_join(member):
     channel = discord.utils.get(member.server.channels, name="logs")
     server = member.server
     fmt = '**+** {0.mention} tocmai a intrat in comunitatea **WeAreOne**!'
-    await client.send_message(channel, fmt.format(member))
+f    await client.send_message(channel, fmt.format(member))
 
 @client.event
 async def on_member_remove(member):
@@ -250,15 +250,12 @@ async def serverinfo(ctx):
 
 @client.command(pass_context=True)
 async def setgame(ctx, *, topresent):
-	a = 1
 	"""Sets my game (Owner)"""
 	if ctx.message.author.id == (ownerid):
 		message = ctx.message
 		await client.delete_message(message)
 		await client.whisper("Game was set to **{}**!".format(topresent))
-		while True:
-			await client.change_presence(game=discord.Game(name="%s for %s"%(topresent, a)))
-			a += 1
+		await client.change_presence(game=discord.Game(name=topresent))
 
 #Clears The Chat
 
