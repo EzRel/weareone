@@ -32,7 +32,7 @@ async def on_message(message):
 		if canlink == 0:
 			await client.delete_message(message)
 			await client.say("Nu trimite link-uri!")
-	if message.content.find("fuck") != -1 || message.content.find("shit") != -1 || message.content.find("pula") != -1:
+	if message.content.find("fuck") != -1 or message.content.find("shit") != -1 or message.content.find("pula") != -1:
 		await client.delete_message(message)
 		await client.say("Nu injura!")
 
