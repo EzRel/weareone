@@ -19,7 +19,7 @@ async def on_ready():
 	print("----------------------")
 	await client.change_presence(game=discord.Game(name='Foloseste w.help!'))
 
-"""@client.event
+@client.event
 async def on_message(message):
 	user_roles = [r.name.lower() for r in message.author.roles]
 
@@ -34,7 +34,7 @@ async def on_message(message):
 			await client.say("Nu trimite link-uri!")
 	if message.content.find("fuck") != -1 or message.content.find("shit") != -1 or message.content.find("pula") != -1:
 		await client.delete_message(message)
-		await client.say("Nu injura!")"""
+		await client.say("Nu injura!")
 
 @client.event
 async def on_member_join(member):
