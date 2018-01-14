@@ -37,8 +37,8 @@ async def on_message(message):
 			await client.send_message(message.channel, "Nu trimite link-uri!")
 			await client.delete_message(message)
 	if message.content.find("fuck") != -1 or message.content.find("shit") != -1 or message.content.find("pula") != -1 or message.content.find("pizda") != -1 or message.content.find("muie") != -1:
+		await client.send_message(message.channel, "Nu injura!")
 		await client.delete_message(message)
-		await client.say("Nu injura!")
 
 @client.event
 async def on_member_join(member):
