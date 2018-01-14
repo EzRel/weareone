@@ -203,7 +203,7 @@ async def dice(ctx, number = ""):
 		number = int(number)
 	for x in range(1, 5):
 		await client.edit_message(dicemsg, randint(1, 6))
-		sleep(0.2 * x)
+		sleep(0.1 * x)
 	await client.edit_message(dicemsg, "A picat %s!"%number)
 
 @client.command(pass_context=True)       
