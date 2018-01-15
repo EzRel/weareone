@@ -45,9 +45,9 @@ async def on_message(message):
 		elif msgc.find("http://") != -1 or msgc.find("https://") != -1:
 			await client.send_message(message.channel, "Nu trimite link-uri!")
 			await client.delete_message(message)
-		elif message.content.upper() != message.content.upper():
+		elif message.content == message.content.upper():
 			await client.send_message(message.channel, "\"%s\" ~ Nu spama caps lock!"%message.content.lower())
-			await client.delete_message(message)
+			await client.edit_message(message, message.content.lower())
 	if msgc.find("fuck") != -1 or msgc.find("shit") != -1 or msgc.find("pula") != -1 or msgc.find("pizda") != -1 or msgc.find("muie") != -1:
 		await client.send_message(message.channel, "Nu injura!")
 		await client.delete_message(message)
