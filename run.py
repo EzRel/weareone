@@ -37,6 +37,15 @@ async def on_message(message):
 		canlink = 0
 	else:
 		canlink = 1
+		
+	if "admin" not in user_roles:
+		isadm = 0
+	else:
+		isadm = 1
+		
+	if isadm == 1:
+		if msgc.find("w.tell ") == 0:
+			await client.delete_message(message)
 	
 	if canlink == 0:
 		if msgc.find("discord.gg/") != -1:
