@@ -38,6 +38,12 @@ async def on_message(message):
 	else:
 		canlink = 1
 		
+	if canlink == 0:
+		if "bots" not in user_roles:
+			canlink = 0
+		else:
+			canlink = 1
+		
 	if "admin" not in user_roles:
 		isadm = 0
 	else:
