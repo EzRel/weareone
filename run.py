@@ -18,6 +18,14 @@ async def on_ready():
 	print("ID: %s"%client.user.id)
 	print("----------------------")
 	await client.change_presence(game=discord.Game(name='Foloseste w.help!'))
+	server = client.get_server('295959610043531264')
+	roles = server.roles
+	members = server.members
+	member = None
+	for mem in members:
+		if mem.id == ctx.message.author.id:
+			member = mem
+			break
 
 @client.event
 async def on_message(message):
@@ -37,7 +45,7 @@ async def on_message(message):
 		elif msgc.find("http://") != -1 or msgc.find("https://") != -1:
 			await client.send_message(message.channel, "Nu trimite link-uri!")
 			await client.delete_message(message)
-		elif message.content == message.content.upper():
+		elif message.content.upper() != message.content.upper():
 			await client.send_message(message.channel, "\"%s\" ~ Nu spama caps lock!"%message.content.lower())
 			await client.delete_message(message)
 	if msgc.find("fuck") != -1 or msgc.find("shit") != -1 or msgc.find("pula") != -1 or msgc.find("pizda") != -1 or msgc.find("muie") != -1:
