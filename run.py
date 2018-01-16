@@ -31,8 +31,22 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+	levelvalue = 0
+	levelkey = 0
 	for key, value in levelsdex.items():
-		#await client.send_message(message.channel, "%s pentru %s!"%(key, value))
+		if key == message.author.id:
+			levelvalue = int(value)
+			levelkey = key
+			break
+
+	if levelvalue != 0:
+		levelvalue += randint(1, 10)
+		if levelvalue % 100 == 0:
+			await client.send_message(message.channel, "GG %s, ai avansat la **LEVEL %s**!"%(get_member(levelkey).nick, levelvalue % 100))
+		levelsdex[levelkey] = levelvalue
+	else:
+		levelsdex.update({message.author.id : 0})
+
 	msgc = message.content.lower()
 	await client.process_commands(message)
 	user_roles = [r.name.lower() for r in message.author.roles]
