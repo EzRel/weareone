@@ -10,7 +10,7 @@ from random import randint
 
 client = Bot(prefix)
 
-levelsdex = {}
+levelsdex = {'CoolIDGuy': 100}
 
 @client.event
 async def on_ready():
