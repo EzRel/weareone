@@ -106,6 +106,11 @@ async def ping():
 	pingms = await client.say("Pinging...")
 	ping = time.time() - pingtime
 	await client.edit_message(pingms, ":ping_pong:  Pong! A luat `%.01f secunde` !" % ping)
+	
+@client.command()
+async def play():
+	'''Music!'''
+	await client.say(":tools: Lucram la comanda asta!")
 
 @client.command()
 async def online():
