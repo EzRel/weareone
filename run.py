@@ -31,7 +31,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-	for key, value in levelsdex:
+	for key, value in levelsdex.items():
 		await client.say("%s pentru %s!"%(key, value))
 	
 	msgc = message.content.lower()
