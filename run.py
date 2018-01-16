@@ -108,6 +108,13 @@ async def ping():
 	await client.edit_message(pingms, ":ping_pong:  Pong! A luat `%.01f secunde` !" % ping)
 	
 @client.command()
+async def levels():
+	'''See the levels'''
+	await client.say("AS FOLLOWING:")
+	for key, value in levelsdex.items():
+		await client.say("%s => %s"%(key, value))
+	
+@client.command()
 async def play():
 	'''Music!'''
 	await client.say(":tools: Lucram la comanda asta!")
