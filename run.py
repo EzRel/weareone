@@ -107,10 +107,10 @@ async def ping():
 	ping = time.time() - pingtime
 	await client.edit_message(pingms, ":ping_pong:  Pong! A luat `%.01f secunde` !" % ping)
 	
-@client.command()
-async def levels():
+@client.command(pass_context=True)
+async def levels(ctx):
 	'''See the levels'''
-	await client.say("AS FOLLOWING:")
+	await client.say("Esti %s | AS FOLLOWING:"%ctx.message.author.id)
 	for key, value in levelsdex.items():
 		await client.say("%s => %s"%(key, value))
 	
