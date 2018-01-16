@@ -34,7 +34,7 @@ async def on_message(message):
 	levelvalue = 0
 	levelkey = 0
 	for key, value in levelsdex.items():
-		if key == message.author.id:
+		if int(key) == int(message.author.id):
 			levelvalue = int(value)
 			levelkey = key
 			break
