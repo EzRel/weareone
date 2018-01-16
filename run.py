@@ -33,7 +33,6 @@ async def on_ready():
 async def on_message(message):
 	for key, value in levelsdex.items():
 		#await client.send_message(message.channel, "%s pentru %s!"%(key, value))
-	
 	msgc = message.content.lower()
 	await client.process_commands(message)
 	user_roles = [r.name.lower() for r in message.author.roles]
