@@ -32,7 +32,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
 	for key, value in levelsdex.items():
-		await client.send_message(message.channel, "%s pentru %s!"%(key, value))
+		#await client.send_message(message.channel, "%s pentru %s!"%(key, value))
 	
 	msgc = message.content.lower()
 	await client.process_commands(message)
