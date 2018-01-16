@@ -10,6 +10,8 @@ from random import randint
 
 client = Bot(prefix)
 
+levelsdex = {}
+
 @client.event
 async def on_ready():
 	print("----------------------")
@@ -29,6 +31,9 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+	for key, value in levelsdex:
+		await client.say("%s pentru %s!"%(key, value))
+	
 	msgc = message.content.lower()
 	await client.process_commands(message)
 	user_roles = [r.name.lower() for r in message.author.roles]
