@@ -41,7 +41,7 @@ async def on_message(message):
 
 	if levelvalue != 0:
 		levelvalue += randint(1, 10)
-		if levelvalue % 100 == 0:
+		if levelvalue % 100 == 0 && levelvalue != 0:
 			await client.send_message(message.channel, "GG %s, ai avansat la **LEVEL %s**!"%(get_member(levelkey).nick, levelvalue % 100))
 		levelsdex[levelkey] = levelvalue
 	else:
