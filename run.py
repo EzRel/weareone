@@ -73,17 +73,17 @@ async def on_message(message):
 
 @client.event
 async def on_member_join(member):
-    channel = discord.utils.get(member.server.channels, name="logs")
-    server = member.server
-    fmt = '**+** {0.mention} tocmai a intrat in comunitatea **WeAreOne**!'
-    await client.send_message(channel, fmt.format(member))
+	channel = discord.utils.get(member.server.channels, name="logs")
+	server = member.server
+	fmt = '**+** {0.mention} tocmai a intrat in comunitatea **WeAreOne**!'
+	await client.send_message(channel, fmt.format(member))
 
 @client.event
 async def on_member_remove(member):
-    channel = discord.utils.get(member.server.channels, name="logs")
-    server = member.server
-    fmt = '**-** {0.mention} a parasit comunitatea. :confused:'
-    await client.send_message(channel, fmt.format(member, server))
+	channel = discord.utils.get(member.server.channels, name="logs")
+	server = member.server
+	fmt = '**-** {0.mention} a parasit comunitatea. :confused:'
+	await client.send_message(channel, fmt.format(member, server))
 
 @client.command()
 async def ping():
@@ -214,13 +214,13 @@ async def memes(ctx, number = ""):
 		x = "https://www.youtube.com/watch?v=CqCCBohjaqA" #Waddup I'm Jared
 	await client.say(x)
 
-@client.command(pass_context=True)       
+@client.command(pass_context=True)   
 async def havefun(ctx, number = ""):
 	'''Comenzi simple si distractive!'''
 	for x in range(1, 100 * int(number)):
 		await client.say("SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM")
 			#SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM
-@client.command(pass_context=True)       
+@client.command(pass_context=True)   
 async def dice(ctx, number = ""):
 	'''Exact ca un zar normal!'''
 	dicemsg = await client.say("Ruleaza...")
@@ -233,7 +233,7 @@ async def dice(ctx, number = ""):
 		sleep(0.1 * x)
 	await client.edit_message(dicemsg, "A picat %s!"%number)
 
-@client.command(pass_context=True)       
+@client.command(pass_context=True)   
 async def tellthenews(ctx, timestosay = "", interval = ""):
 	'''Informatii date o data la x secunde :)'''
 
@@ -323,7 +323,7 @@ async def setgame(ctx, *, topresent):
 
 #Clears The Chat
 
-@client.command(pass_context=True)       
+@client.command(pass_context=True)   
 async def clear(ctx, number):
 	'''Clears The Chat 1-100'''
 	user_roles = [r.name.lower() for r in ctx.message.author.roles]
@@ -340,7 +340,7 @@ async def clear(ctx, number):
 	sleep(3)
 	await client.delete_message(deletedm) 
 
-@client.command(pass_context=True)       
+@client.command(pass_context=True)   
 async def tell(ctx, type, *, tmsg):
 	'''Spune lumii mesajele tale prin mine ;)'''
 
@@ -365,7 +365,7 @@ async def poll(ctx, opt1 = "👍", opt2 = "👎", *, pmsg):
 	await client.add_reaction(rmsg, opt2)
 	print("Un nou w.poll!")
 
-@client.command(pass_context = True)       
+@client.command(pass_context = True)   
 async def rankcolor(ctx, colour):
 	'''Configureaza culoarea rank-ului tau! (MEMBERS ONLY)'''
 	server = ctx.message.server
@@ -383,7 +383,7 @@ async def rankcolor(ctx, colour):
 
 	await client.say("Ai primit **color::%s**!"%colour)
 
-@client.command(pass_context = True)       
+@client.command(pass_context = True)   
 async def guild(ctx, option, guildname = "", user: discord.Member = ""):
 	'''Configureaza guild-ul in care esti'''
 	if option == 'create':
@@ -675,5 +675,5 @@ async def unmute(ctx, *, member : discord.Member):
 
 
 if not os.environ.get('TOKEN'):
-    print("no token found!")
+	print("no token found!")
 client.run(os.environ.get('TOKEN').strip('"'))
