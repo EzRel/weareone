@@ -37,7 +37,7 @@ async def on_message(message):
 		levelvalue += 10
 		if levelvalue % 1000 == 0 and levelvalue != 0 and message.author.display_name != 'WAO Official':
 			await client.send_message(message.channel, "%s, ai mai castigat 1000 de experienta! Acum ai **LEVEL %s**! BRAVO si **GG**!"%(message.author.mention, int(levelvalue / 100)))
-		if levelvalue % 100 == 0 and levelvalue != 0 and message.author.display_name != 'WAO Official':
+		elif levelvalue % 100 == 0 and levelvalue != 0 and message.author.display_name != 'WAO Official':
 			await client.send_message(message.channel, "GG %s, ai avansat la **LEVEL %s**!"%(message.author.mention, int(levelvalue / 100)))
 		levelsdex[levelkey] = levelvalue
 	else:
