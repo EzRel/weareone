@@ -104,11 +104,18 @@ async def ping():
 	await client.edit_message(pingms, ":ping_pong:  Pong! A luat `%.01f secunde` !" % ping)
 	
 @client.command(pass_context=True)
-async def levels(ctx):
+async def levels(ctx, mode = '1'):
 	'''See the levels'''
-	await client.say("Esti %s | AS FOLLOWING:"%ctx.message.author.id)
-	for key, value in levelsdex.items():
-		await client.say("%s => %s"%(key, value))
+	if mode == 1:
+		await client.say("Esti %s | AS FOLLOWING:"%ctx.message.author.id)
+		for key, value in levelsdex.items():
+			await client.say("%s => %s"%(key, value))
+	else:
+		lvlmsg = '{'
+		for key, value in levelsdex.items():
+			lvlmsg = "%s, '%s' : %s"%(lvlmsg, key, value)
+		lvlmsg = "%s}"%lvlmsg
+	await client.say(lvlmsg)
 	
 @client.command()
 async def play():
