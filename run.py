@@ -11,7 +11,7 @@ from random import randint
 client = Bot(prefix)
 
 #saved as 17.01.2018-17:34!
-levelsdex = {'70711' : 100, '292684049116430338' : 1020, '295158983982055424' : 64020, '399949104068952064' : 8250, '239748580464656385' : 19020}
+levelsdex = {'70711' : 100, '292684049116430338' : 1020, '295158983982055424' : 65120, '399949104068952064' : 8250, '239748580464656385' : 19020}
 
 @client.event
 async def on_ready():
@@ -34,7 +34,9 @@ async def on_message(message):
 			break
 
 	if levelvalue != -1:
-		levelvalue += 10
+		levelvalue += randint(1, 10)
+		if message.author.display_name == 'EzRel [VYN]':
+			levelvalue += 20
 		if levelvalue % 1000 == 0 and levelvalue != 0 and message.author.display_name != 'WAO Official':
 			await client.send_message(message.channel, "%s, ai mai castigat 1000 de experienta! Acum ai **LEVEL %s**! BRAVO si **GG**!"%(message.author.mention, int(levelvalue / 100)))
 		elif levelvalue % 100 == 0 and levelvalue != 0 and message.author.display_name != 'WAO Official':
