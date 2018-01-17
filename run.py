@@ -106,12 +106,12 @@ async def ping():
 @client.command(pass_context=True)
 async def levels(ctx, mode = '1'):
 	'''See the levels'''
-	if mode == 1:
+	if mode == '1':
 		await client.say("Esti %s | AS FOLLOWING:"%ctx.message.author.id)
 		for key, value in levelsdex.items():
 			await client.say("%s => %s"%(key, value))
 	else:
-		lvlmsg = '{'
+		lvlmsg = "{'3943' : 1"
 		for key, value in levelsdex.items():
 			lvlmsg = "%s, '%s' : %s"%(lvlmsg, key, value)
 		lvlmsg = "%s}"%lvlmsg
