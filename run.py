@@ -35,7 +35,7 @@ async def on_message(message):
 	if levelvalue != -1:
 		levelvalue += 10
 		if levelvalue % 100 == 0 and levelvalue != 0:
-			await client.send_message(message.channel, "GG %s, ai avansat la **LEVEL %s**!"%(message.author.mention, levelvalue / 100))
+			await client.send_message(message.channel, "GG %s, ai avansat la **LEVEL %s**!"%(message.author.mention, int(levelvalue / 100)))
 		levelsdex[levelkey] = levelvalue
 	else:
 		levelsdex.update({message.author.id : 0})
