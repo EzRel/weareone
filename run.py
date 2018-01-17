@@ -10,7 +10,8 @@ from random import randint
 
 client = Bot(prefix)
 
-levelsdex = {'70711': 100}
+#saved as 17.01.2018-17:34!
+levelsdex = {'70711': 100, '292684049116430338': 1020, '295158983982055424': 26030, '399949104068952064': 3250}
 
 @client.event
 async def on_ready():
@@ -34,7 +35,9 @@ async def on_message(message):
 
 	if levelvalue != -1:
 		levelvalue += 10
-		if levelvalue % 100 == 0 and levelvalue != 0:
+		if levelvalue % 1000 == 0 and levelvalue != 0 and message.author.display_name != 'WAO Official':
+			await client.send_message(message.channel, "%s, ai mai castigat 1000 de experienta! Acum ai **LEVEL %s**! BRAVO si **GG**!"%(message.author.mention, int(levelvalue / 100)))
+		if levelvalue % 100 == 0 and levelvalue != 0 and message.author.display_name != 'WAO Official':
 			await client.send_message(message.channel, "GG %s, ai avansat la **LEVEL %s**!"%(message.author.mention, int(levelvalue / 100)))
 		levelsdex[levelkey] = levelvalue
 	else:
