@@ -21,13 +21,6 @@ async def on_ready():
 	print("----------------------")
 	await client.change_presence(game=discord.Game(name='Foloseste w.help!'))
 	server = client.get_server('295959610043531264')
-	roles = server.roles
-	members = server.members
-	member = None
-	for mem in members:
-		if mem.id == ctx.message.author.id:
-			member = mem
-			break
 
 @client.event
 async def on_message(message):
@@ -42,7 +35,7 @@ async def on_message(message):
 	if levelvalue != -1:
 		levelvalue += 10
 		if levelvalue % 100 == 0 and levelvalue != 0:
-			await client.send_message(message.channel, "GG %s, ai avansat la **LEVEL %s**!"%(get_member(levelkey).nick, levelvalue % 100))
+			await client.send_message(message.channel, "GG %s, ai avansat la **LEVEL %s**!"%(message.author.mention, levelvalue % 100))
 		levelsdex[levelkey] = levelvalue
 	else:
 		levelsdex.update({message.author.id : 0})
