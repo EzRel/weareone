@@ -31,7 +31,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-	levelvalue = 0
+	levelvalue = -1
 	levelkey = 0
 	for key, value in levelsdex.items():
 		if int(key) == int(message.author.id):
@@ -39,7 +39,7 @@ async def on_message(message):
 			levelkey = key
 			break
 
-	if levelvalue != 0:
+	if levelvalue != -1:
 		levelvalue += 10
 		if levelvalue % 100 == 0 and levelvalue != 0:
 			await client.send_message(message.channel, "GG %s, ai avansat la **LEVEL %s**!"%(get_member(levelkey).nick, levelvalue % 100))
