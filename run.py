@@ -120,11 +120,12 @@ async def cumpara(ctx, pid = ''):
 			curr = pinfo[x + 2].split("~")
 			await client.say(curr[1])
 			if curr[0] == "misc::custom_set_game":
-				await client.change_presence(game=discord.Game(name=curr[1]))
+				currgame = curr[1]
+				await client.change_presence(game=discord.Game(name=currgame))
 				itemspr = "%s\n- Status customizat (20 LVL)"%itemspr
 		#await client.say(pinfo)
 		tmsg = "%s, produsele tale au fost achizitionate cu succes!\n\n========\n:shopping_cart: Info:\n%s\n========"%(ctx.message.author.mention, itemspr)
-		embed = discord.Embed(title = "Achizitionare completa!", description = tmsg, color = 0xFFFFF)
+		embed = discord.Embed(title = "Achizitionare completa!", description = tmsg, color = 0xf1c40f)
 		await client.send_message(ctx.message.channel, embed = embed)
 	else:
 		await client.say("Comanda a fost interpretata gresit! `w.help cumpara`")
