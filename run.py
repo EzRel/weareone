@@ -114,7 +114,7 @@ async def cumpara(ctx, pid = ''):
 	'''Dupa ce ti-ai achizitionat produsul, foloseste comanda ca sa primesti tot.'''
 	if pid != "":
 		pinfo = urllib.request.urlopen("http://waodiscord.000webhostapp.com/purchases/%s.txt"%pid).read(1000)
-		pinfo = pinfo.split("`")
+		pinfo = str(pinfo).split("`")
 		itemspr = "- Produse: %s"%int(pinfo[1])
 		for x in range(int(pinfo[1])):
 			curr = pinfo[x + 1].split("~")
