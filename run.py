@@ -181,15 +181,6 @@ async def animate():
 	sleep(.1)
 	await client.edit_message(animms, "animatinG")
 
-"""@client.command(pass_context=True)
-async def guild(ctx, subcom = ""):
-	if subcom == "" || subcom == "help":
-		ms = await client.say("Foloseste `!guild {join|leave|create}`!")
-	elif subcom == "create":
-		ms = await client.say("Inca lucram la `!guild create` !")
-	else:
-		ms = await client.say("Foloseste `!guild {join|leave|create}`!")"""
-
 @client.command(pass_context=True)
 async def memes(ctx, number = ""):
 	'''Iti da memezurile'''
@@ -455,6 +446,7 @@ async def guild(ctx, option, guildname = "", user: discord.Member = ""):
 			return await client.say("Ai nevoie de rolul de **Guild Maker** pentru a putea crea un guild!")
 		pass
 		await client.say("Ai creat guild-ul %s!"%guildname)
+		await client.change_nickname(ctx.message.author, "%s [G]"%ctx.message.author.display_name)
 		#await ctx.guild.create_category("----%s----"%guildname)
 		await client.create_role(client.get_server('295959610043531264'), name = "%sGUILDw"%guildname, colour = discord.Colour.purple())
 		grole = await client.create_role(client.get_server('295959610043531264'), name = "%sGUILD"%guildname, colour = discord.Colour.purple())
