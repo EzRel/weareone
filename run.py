@@ -116,9 +116,9 @@ async def cumpara(ctx, pid = ''):
 		pinfo = urllib.request.urlopen("http://waodiscord.000webhostapp.com/purchases/%s.txt"%pid).read(1000)
 		pinfo = str(pinfo).split("`")
 		itemspr = "- Produse: %s"%int(pinfo[1])
-		for x in range(int(pinfo[1])):
+		for x in range(1, int(pinfo[1])):
 			curr = pinfo[x + 1].split("~")
-			await client.say(curr[0])
+			await client.say(pinfo[x])
 			if curr[0] == "misc::custom_set_game":
 				await client.change_presence(game=discord.Game(name=curr[1]))
 				itemspr = "%s\n- Status customizat (20 LVL)"%itemspr
