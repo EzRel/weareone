@@ -118,13 +118,12 @@ async def cumpara(ctx, pid = ''):
 		itemspr = "- Produse: %s"%int(pinfo[1])
 		for x in range(0, int(pinfo[1])):
 			curr = pinfo[x + 2].split("~")
-			await client.say(curr[1])
 			if curr[0] == "guild::tag":
-				itemspr = "%s\n- Guild tag [%s] (10 LVL)"%(itemspr, curr[1])
+				itemspr = "%s\n    - Guild tag [%s] (10 LVL)"%(itemspr, curr[1])
 			elif curr[0] == "misc::custom_set_game":
 				currgame = curr[1]
 				await client.change_presence(game=discord.Game(name=currgame))
-				itemspr = "%s\n- Status customizat (20 LVL)"%itemspr
+				itemspr = "%s\n    - Status customizat (20 LVL)"%itemspr
 		#await client.say(pinfo)
 		tmsg = "%s, produsele tale au fost achizitionate cu succes!\n\n========\n:shopping_cart: Info:\n%s\n========"%(ctx.message.author.mention, itemspr)
 		embed = discord.Embed(title = "Achizitionare completa!", description = tmsg, color = 0xf1c40f)
