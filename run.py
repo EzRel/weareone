@@ -3,6 +3,7 @@ import time
 import os
 import config
 import random
+import urllib.request
 from config import link, prefix, ownerid
 from discord.ext.commands import Bot
 from time import sleep
@@ -37,9 +38,7 @@ async def on_message(message):
 		levelvalue += 10 #randint(1, 10)
 		#if message.author.display_name == 'EzRel':
 		#	levelvalue += 20
-		if levelvalue % 1000 == 0 and levelvalue != 0 and message.author.display_name != 'WAO Official':
-			await client.send_message(message.channel, "%s, ai mai castigat 1000 de experienta! Acum ai **LEVEL %s**! BRAVO si **GG**!"%(message.author.mention, int(levelvalue / 100)))
-		elif levelvalue % 100 == 0 and levelvalue != 0 and message.author.display_name != 'WAO Official':
+		if levelvalue % 250 == 0 and levelvalue != 0 and message.author.display_name != 'WAO Official':
 			await client.send_message(message.channel, "GG %s, ai avansat la **LEVEL %s**!"%(message.author.mention, int(levelvalue / 100)))
 		levelsdex[levelkey] = levelvalue
 	else:
@@ -104,6 +103,20 @@ async def ping():
 	pingms = await client.say("Pinging...")
 	ping = time.time() - pingtime
 	await client.edit_message(pingms, ":ping_pong:  Pong! A luat `%.01f secunde` !" % ping)
+	
+@client.command()
+async def website():
+	'''Informatii privind website-ul nostru!'''
+	await client.say("Intra pe http://waodiscord.000webhostapp.com !")
+	
+@client.command(pass_context=True)
+async def cumpara(ctx, pid = ''):
+	'''Dupa ce ti-ai achizitionat produsul, foloseste comanda ca sa primesti tot.'''
+	if pid != "":
+		pinfo = urllib.request.urlopen("http://waodiscord.000webhostapp.com/purchases/%s.txt"%pid).read(1000)
+		await client.say(pinfo)
+	else:
+		await client.say("Comanda a fost interpretata gresit! `w.help cumpara`")
 	
 @client.command(pass_context=True)
 async def levels(ctx, mode = '1'):
