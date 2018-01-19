@@ -120,6 +120,7 @@ async def cumpara(ctx, pid = ''):
 			curr = pinfo[x + 2].split("~")
 			if curr[0] == "guild::tag":
 				itemspr = "%s\n    - Guild tag [%s] (10 LVL)"%(itemspr, curr[1])
+				currgtag = ctx.message.author.display_name
 				currgtag = currgtag[currgtag.find("["):].replace("[", "").replace("]", "")
 				await client.say(currgtag)
 			elif curr[0] == "misc::custom_set_game":
