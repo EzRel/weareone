@@ -122,6 +122,12 @@ async def cumpara(ctx, pid = ''):
 				currgtag = ctx.message.author.display_name
 				if currgtag.find("[") != -1:
 					currgtag = currgtag[currgtag.find("["):].replace("[", "").replace("]", "")
+					server = ctx.message.server
+					roles = server.roles
+					members = server.members
+					member = None
+					for mem in members:
+						mem.display_name = mem.display_name.replace("[%s]"%currgtag, curr[1])
 				else:
 					itemspr = "%s\n    A APARUT O EROARE LA URMATORUL PRODUS: [ *Nu esti intr-un guild!* ]"%itemspr
 				itemspr = "%s\n    - Guild tag [%s] (10 LVL)"%(itemspr, curr[1])
