@@ -119,10 +119,12 @@ async def cumpara(ctx, pid = ''):
 		for x in range(0, int(pinfo[1])):
 			curr = pinfo[x + 2].split("~")
 			if curr[0] == "guild::tag":
-				itemspr = "%s\n    - Guild tag [%s] (10 LVL)"%(itemspr, curr[1])
 				currgtag = ctx.message.author.display_name
-				currgtag = currgtag[currgtag.find("["):].replace("[", "").replace("]", "")
-				await client.say(currgtag)
+				if currgtag.find("[") != -1:
+					currgtag = currgtag[currgtag.find("["):].replace("[", "").replace("]", "")
+				else:
+					itemspr = "%s\n    A APARUT O EROARE LA URMATORUL PRODUS: [ *Nu esti intr-un guild!* ]"%itemspr
+				itemspr = "%s\n    - Guild tag [%s] (10 LVL)"%(itemspr, curr[1])
 			elif curr[0] == "misc::custom_set_game":
 				currgame = curr[1]
 				await client.change_presence(game=discord.Game(name=currgame))
