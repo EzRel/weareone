@@ -113,8 +113,17 @@ async def website():
 async def cumpara(ctx, pid = ''):
 	'''Dupa ce ti-ai achizitionat produsul, foloseste comanda ca sa primesti tot.'''
 	if pid != "":
-		pinfo = urllib.request.urlopen("http://waodiscord.000webhostapp.com/purchases/%s.txt"%pid).read(1000)
-		await client.say(pinfo)
+		pinfo = urllib.request.urlopen("http://waodiscord.000webhostapp.com/purchases/%s.txt"%pid).read(1000).split("`")
+		itemspr = "- Produse: %s"%int(pinfo[1]
+		for x in range(int(pinfo[1])):
+			curr = pinfo[x + 1].split("~")
+			if curr[0] == "misc::custom_set_game":
+				await client.change_presence(game=discord.Game(name=curr[1]))
+				itemspr = "%s\n- Status customizat (20 LVL)"%itemspr
+		#await client.say(pinfo)
+		tmsg = "%s, , produsele tale au fost achizitionate cu succes!\n\n========\n:shopping_cart: Info:%s\n========"%(ctx.message.author.mention, itemspr)
+		embed = discord.Embed(title = "Achizitionare completa!", description = tmsg, color = 0xFFFFF)
+		await client.send_message(ctx.message.channel, embed = embed)
 	else:
 		await client.say("Comanda a fost interpretata gresit! `w.help cumpara`")
 	
