@@ -11,7 +11,7 @@ from random import randint
 client = Bot(prefix)
 
 #saved as 17.01.2018-17:34!
-levelsdex = {'3943' : 1, '70711' : 100, '292684049116430338' : 1020, '295158983982055424' : 385580, '399949104068952064' : 11290, '239748580464656385' : 19020, '342853951353520128' : 10}
+levelsdex = {'70711' : -100, '292684049116430338' : 1020, '295158983982055424' : 385620, '399949104068952064' : 11300, '239748580464656385' : 19020, '342853951353520128' : 10, '285816271260614666' : 0}
 
 @client.event
 async def on_ready():
@@ -113,9 +113,13 @@ async def levels(ctx, mode = '1'):
 		for key, value in levelsdex.items():
 			await client.say("%s => %s"%(key, value))
 	else:
-		lvlmsg = "{'3943' : 1"
+		lvlmsg = '{'
 		for key, value in levelsdex.items():
-			lvlmsg = "%s, '%s' : %s"%(lvlmsg, key, value)
+			if value == -100:
+				isvirgula = ""
+			else:
+				isvirgula = ","
+			lvlmsg = "%s%s '%s' : %s"%(lvlmsg, isvirgula, key, value)
 		lvlmsg = "%s}"%lvlmsg
 	await client.say(lvlmsg)
 	
