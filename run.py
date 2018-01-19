@@ -113,7 +113,7 @@ async def website():
 async def cumpara(ctx, pid = ''):
 	'''Dupa ce ti-ai achizitionat produsul, foloseste comanda ca sa primesti tot.'''
 	if pid != "":
-		pinfo = urllib.request.urlopen("http://waodiscord.000webhostapp.com/purchases/%s.txt"%pid).read(1000)
+		pinfo = "d`1`misc::custom_set_game~ILL SHOW YOU DA WAE`d" #urllib.request.urlopen("http://waodiscord.000webhostapp.com/purchases/%s.txt"%pid).read(1000)
 		pinfo = str(pinfo).split("`")
 		itemspr = "- Produse: %s"%int(pinfo[1])
 		for x in range(1, int(pinfo[1])):
