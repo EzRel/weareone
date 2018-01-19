@@ -118,11 +118,12 @@ async def cumpara(ctx, pid = ''):
 		itemspr = "- Produse: %s"%int(pinfo[1])
 		for x in range(int(pinfo[1])):
 			curr = pinfo[x + 1].split("~")
+			await client.say(curr[0])
 			if curr[0] == "misc::custom_set_game":
 				await client.change_presence(game=discord.Game(name=curr[1]))
 				itemspr = "%s\n- Status customizat (20 LVL)"%itemspr
 		#await client.say(pinfo)
-		tmsg = "%s, , produsele tale au fost achizitionate cu succes!\n\n========\n:shopping_cart: Info:%s\n========"%(ctx.message.author.mention, itemspr)
+		tmsg = "%s, produsele tale au fost achizitionate cu succes!\n\n========\n:shopping_cart: Info:\n%s\n========"%(ctx.message.author.mention, itemspr)
 		embed = discord.Embed(title = "Achizitionare completa!", description = tmsg, color = 0xFFFFF)
 		await client.send_message(ctx.message.channel, embed = embed)
 	else:
