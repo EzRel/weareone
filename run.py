@@ -118,7 +118,7 @@ async def cumpara(ctx, pid = ''):
 		itemspr = "- Produse: %s"%int(pinfo[1])
 		for x in range(0, int(pinfo[1])):
 			curr = pinfo[x + 2].split("~")
-			await client.say(x)
+			await client.say(curr[1])
 			if curr[0] == "misc::custom_set_game":
 				await client.change_presence(game=discord.Game(name=curr[1]))
 				itemspr = "%s\n- Status customizat (20 LVL)"%itemspr
