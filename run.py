@@ -120,6 +120,8 @@ async def cumpara(ctx, pid = ''):
 			curr = pinfo[x + 2].split("~")
 			if curr[0] == "guild::tag":
 				itemspr = "%s\n    - Guild tag [%s] (10 LVL)"%(itemspr, curr[1])
+				currgtag = currgtag[currgtag.find("["):].replace("[", "").replace("]", "")
+				await client.say(currgtag)
 			elif curr[0] == "misc::custom_set_game":
 				currgame = curr[1]
 				await client.change_presence(game=discord.Game(name=currgame))
@@ -216,33 +218,33 @@ async def memes(ctx, number = ""):
 	elif rdnb == 10:
 		x = "https://www.youtube.com/watch?v=UcRtFYAz2Yo" #DANCE TILL YOU'RE DEAD 10 HOURS
 	elif rdnb == 11:
-		x = "https://www.youtube.com/watch?v=Pz68j1pXrLE" #
+		x = "https://www.youtube.com/watch?v=Pz68j1pXrLE" #The Ting Goes Running In The 90s
 	elif rdnb == 12:
-		x = "https://www.youtube.com/watch?v=X9NruRk3nfk" #
+		x = "https://www.youtube.com/watch?v=X9NruRk3nfk" #Woah-ing in the 90's
 	elif rdnb == 13:
-		x = "https://www.youtube.com/watch?v=wsO-Td0hqXo" #
+		x = "https://www.youtube.com/watch?v=wsO-Td0hqXo" #DEDOTADED WAM
 	elif rdnb == 14:
-		x = "https://www.youtube.com/watch?v=Vra0Qq0HYsg" #
+		x = "https://www.youtube.com/watch?v=Vra0Qq0HYsg" #VINE - Scaring cat with car horn (remix 2)
 	elif rdnb == 15:
-		x = "https://www.youtube.com/watch?v=eFajTI4lOHM" #
+		x = "https://www.youtube.com/watch?v=eFajTI4lOHM" #Super Mario Head Smash
 	elif rdnb == 16:
-		x = "https://www.youtube.com/watch?v=OxDSXasDF0w" #
+		x = "https://www.youtube.com/watch?v=OxDSXasDF0w" #Vine - It's summer...
 	elif rdnb == 17:
-		x = "https://www.youtube.com/watch?v=EBy3y3iCy2A" #
+		x = "https://www.youtube.com/watch?v=EBy3y3iCy2A" #I Thought You Said Printer Vine
 	elif rdnb == 18:
-		x = "https://www.youtube.com/watch?v=-g2fiGwGto4" #
+		x = "https://www.youtube.com/watch?v=-g2fiGwGto4" #Ulala...
 	elif rdnb == 19:
-		x = "https://www.youtube.com/watch?v=uOFk60NRxCo" #
+		x = "https://www.youtube.com/watch?v=uOFk60NRxCo" #Kid rages over CSGO
 	elif rdnb == 20:
-		x = "https://www.youtube.com/watch?v=kZSfPPJ4Fk8" #
+		x = "https://www.youtube.com/watch?v=kZSfPPJ4Fk8" #Adam Smoke Fail Vine
 	elif rdnb == 21:
-		x = "https://www.youtube.com/watch?v=2JxaNWdspjY" #
+		x = "https://www.youtube.com/watch?v=2JxaNWdspjY" #ACTUALLY MEGAN
 	elif rdnb == 22:
-		x = "https://www.youtube.com/watch?v=H5d42w4ZcY4" #
+		x = "https://www.youtube.com/watch?v=H5d42w4ZcY4" #When will you learn
 	elif rdnb == 23:
-		x = "https://www.youtube.com/watch?v=TFlqWou57iQ" #
+		x = "https://www.youtube.com/watch?v=TFlqWou57iQ" #School got me like... (vine)
 	elif rdnb == 24:
-		x = "No memez for da streamz." #https://cdn.discordapp.com/attachments/397456576631537664/401065897420259348/aq79Lnj_460s.png
+		x = "No memez for da streamz." #unlucky :P
 	elif rdnb == 25:
 		x = "https://cdn.discordapp.com/attachments/397456576631537664/401065897420259348/aq79Lnj_460s.png" #Go to Romania they said
 	elif rdnb == 26:
@@ -446,7 +448,7 @@ async def guild(ctx, option, guildname = "", user: discord.Member = ""):
 			return await client.say("Ai nevoie de rolul de **Guild Maker** pentru a putea crea un guild!")
 		pass
 		await client.say("Ai creat guild-ul %s!"%guildname)
-		await client.change_nickname(ctx.message.author, "%s [G]"%ctx.message.author.display_name)
+		await client.change_nickname(ctx.message.author, "%s [%s]"%(ctx.message.author.display_name, guildname))
 		#await ctx.guild.create_category("----%s----"%guildname)
 		await client.create_role(client.get_server('295959610043531264'), name = "%sGUILDw"%guildname, colour = discord.Colour.purple())
 		grole = await client.create_role(client.get_server('295959610043531264'), name = "%sGUILD"%guildname, colour = discord.Colour.purple())
