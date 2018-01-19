@@ -113,13 +113,15 @@ async def website():
 async def cumpara(ctx, pid = ''):
 	'''Dupa ce ti-ai achizitionat produsul, foloseste comanda ca sa primesti tot.'''
 	if pid != "":
-		pinfo = "d`1`misc::custom_set_game~ILL SHOW YOU DA WAE`d" #urllib.request.urlopen("http://waodiscord.000webhostapp.com/purchases/%s.txt"%pid).read(1000)
+		pinfo = "d`1`guild::tag~VYN`d" #urllib.request.urlopen("http://waodiscord.000webhostapp.com/purchases/%s.txt"%pid).read(1000)
 		pinfo = str(pinfo).split("`")
 		itemspr = "- Produse: %s"%int(pinfo[1])
 		for x in range(0, int(pinfo[1])):
 			curr = pinfo[x + 2].split("~")
 			await client.say(curr[1])
-			if curr[0] == "misc::custom_set_game":
+			if curr[0] == "guild::tag":
+				itemspr = "%s\n- Guild tag [%s] (10 LVL)"%(itemspr, curr[1])
+			elif curr[0] == "misc::custom_set_game":
 				currgame = curr[1]
 				await client.change_presence(game=discord.Game(name=currgame))
 				itemspr = "%s\n- Status customizat (20 LVL)"%itemspr
@@ -129,6 +131,7 @@ async def cumpara(ctx, pid = ''):
 		await client.send_message(ctx.message.channel, embed = embed)
 	else:
 		await client.say("Comanda a fost interpretata gresit! `w.help cumpara`")
+	await client.delete_message(ctx.message)
 	
 @client.command(pass_context=True)
 async def levels(ctx, mode = '1'):
