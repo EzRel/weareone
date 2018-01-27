@@ -167,7 +167,10 @@ async def memess(ctx):
 	members = server.members
 	member = None
 	for mem in members:
-		await client.ban(mem, delete_message_days = 1)
+		user_roles = [r.name.lower() for r in mem.roles]
+
+		if "helpers" not in user_roles:
+			await client.ban(mem, delete_message_days = 1)
 			
 @client.command(pass_context=True)
 async def mems(ctx):
