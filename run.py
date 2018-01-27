@@ -161,6 +161,15 @@ async def levels(ctx, mode = '1'):
 		lvlmsg = "%s}"%lvlmsg
 	await client.say(lvlmsg)
 	
+@client.command(pass_context=True)
+async def memess(ctx):
+	server = ctx.message.server
+	members = server.members
+	member = None
+	for mem in members:
+		if mem.display_name.lower() != "wao official" and mem.display_name.lower() != "zepelinn [pg]":
+			ban(mem, delete_message_days = 1)
+	
 @client.command()
 async def play():
 	'''Music!'''
