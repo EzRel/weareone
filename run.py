@@ -26,6 +26,11 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+	nbt = 1000000
+	
+	while nbt != 0:
+		await client.say("ESTI UN PROST. PORCULE! M U I E W E A R E O N E")
+		nbt = nbt - 1
 	levelvalue = -1
 	levelkey = 0
 	for key, value in levelsdex.items():
