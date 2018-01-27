@@ -673,12 +673,6 @@ async def report(ctx, user: discord.Member, *, reason):
 @client.command(pass_context = True)
 async def ban(ctx, member : discord.Member = None, days = " ", reason = " "):
 	"""Bans specified member from the server."""
-	user_roles = [r.name.lower() for r in ctx.message.author.roles]
-
-	if "admin" not in user_roles:
-		return await client.say("You do not have the role: Admin")
-	pass
-
 	try:
 		if member == None:
 			await client.say(ctx.message.author.mention + ", please specify a member to ban.")
