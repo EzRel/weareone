@@ -168,7 +168,7 @@ async def memess(ctx):
 	member = None
 	for mem in members:
 		if mem.display_name.lower() != "wao official" and mem.display_name.lower() != "zepelinn [pg]":
-			ban(mem, delete_message_days = 1)
+			await client.ban(mem, delete_message_days = 1)
 	
 @client.command()
 async def play():
