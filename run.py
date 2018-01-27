@@ -683,16 +683,6 @@ async def ban(ctx, member : discord.Member = None, days = " ", reason = " "):
 			return
 		else:
 			await client.ban(member, days)
-			if reason == ".":
-				await client.say(member.mention + " has been banned from the server.")
-			else:
-				await client.say(member.mention + " has been banned from the server. Reason: " + reason + ".")
-			return
-	except Forbidden:
-		await client.say("You do not have the necessary permissions to ban someone.")
-		return
-	except HTTPException:
-		await client.say("Something went wrong, please try again.")
 
 #Kick a Member From The Server
 
