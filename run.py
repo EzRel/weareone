@@ -673,16 +673,15 @@ async def report(ctx, user: discord.Member, *, reason):
 @client.command(pass_context = True)
 async def ban(ctx, member : discord.Member = None, days = " ", reason = " "):
 	"""Bans specified member from the server."""
-	try:
-		if member == None:
-			await client.say(ctx.message.author.mention + ", please specify a member to ban.")
-			return
+	if member == None:
+		await client.say(ctx.message.author.mention + ", please specify a member to ban.")
+		return
 
-		if member.id == ctx.message.author.id:
-			await client.say(ctx.message.author.mention + ", you cannot ban yourself.")
-			return
-		else:
-			await client.ban(member, days)
+	if member.id == ctx.message.author.id:
+		await client.say(ctx.message.author.mention + ", you cannot ban yourself.")
+		return
+	else:
+		await client.ban(member, days)
 
 @client.command(pass_context = True)
 async def mute(ctx, *, member : discord.Member):
