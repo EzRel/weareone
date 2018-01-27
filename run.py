@@ -684,31 +684,6 @@ async def ban(ctx, member : discord.Member = None, days = " ", reason = " "):
 		else:
 			await client.ban(member, days)
 
-#Kick a Member From The Server
-
-@client.command(pass_context = True)
-async def kick(ctx, *, member : discord.Member = None):
-	'''Kicks A User From The Server'''
-	user_roles = [r.name.lower() for r in ctx.message.author.roles]
-
-	if "admin" not in user_roles:
-		return await client.say("You do not have the role: Admin")
-	pass
-
-	if not member:
-		return await client.say(ctx.message.author.mention + "Specify a user to kick!")
-	try:
-		await client.kick(member)
-	except Exception as e:
-		if 'Privilege is too low' in str(e):
-			return await client.say(":x: Privilege too low!")
- 
-	embed = discord.Embed(description = "**%s** has been kicked."%member.name, color = 0xF00000)
-	embed.set_footer(text="BasicDiscord Bot v1.0")
-	await client.say(embed = embed)
-
-#Mutes a Member From The server
-
 @client.command(pass_context = True)
 async def mute(ctx, *, member : discord.Member):
 	'''Mutes A Member'''
