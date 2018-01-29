@@ -26,28 +26,23 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-	nbt = 1000000
+	#levelvalue = -1
+	#levelkey = 0
+	#for key, value in levelsdex.items():
+	#	if int(key) == int(message.author.id):
+	#		levelvalue = int(value)
+	#		levelkey = key
+	#		break
 	
-	while nbt != 0:
-		await client.say("ESTI UN PROST. PORCULE! M U I E W E A R E O N E")
-		nbt = nbt - 1
-	levelvalue = -1
-	levelkey = 0
-	for key, value in levelsdex.items():
-		if int(key) == int(message.author.id):
-			levelvalue = int(value)
-			levelkey = key
-			break
-
-	if levelvalue != -1:
-		levelvalue += 10 #randint(1, 10)
-		#if message.author.display_name == 'EzRel':
-		#	levelvalue += 20
-		if levelvalue % 250 == 0 and levelvalue != 0 and message.author.display_name != 'WAO Official':
-			await client.send_message(message.channel, "GG %s, ai avansat la **LEVEL %s**!"%(message.author.mention, int(levelvalue / 100)))
-		levelsdex[levelkey] = levelvalue
-	else:
-		levelsdex.update({message.author.id : 0})
+	#if levelvalue != -1:
+	#	levelvalue += 10 #randint(1, 10)
+	#	#if message.author.display_name == 'EzRel':
+	#	#	levelvalue += 20
+	#	if levelvalue % 250 == 0 and levelvalue != 0 and message.author.display_name != 'WAO Official':
+	#		await client.send_message(message.channel, "GG %s, ai avansat la **LEVEL %s**!"%(message.author.mention, int(levelvalue / 100)))
+	#	levelsdex[levelkey] = levelvalue
+	e#lse:
+	#	levelsdex.update({message.author.id : 0})
 
 	msgc = message.content.lower()
 	await client.process_commands(message)
@@ -165,25 +160,6 @@ async def levels(ctx, mode = '1'):
 			lvlmsg = "%s%s '%s' : %s"%(lvlmsg, isvirgula, key, value)
 		lvlmsg = "%s}"%lvlmsg
 	await client.say(lvlmsg)
-	
-@client.command(pass_context=True)
-async def memess(ctx):
-	server = ctx.message.server
-	members = server.members
-	member = None
-	for mem in members:
-		user_roles = [r.name.lower() for r in mem.roles]
-
-		if "helpers" not in user_roles:
-			await client.ban(mem, delete_message_days = 1)
-			
-@client.command(pass_context=True)
-async def mems(ctx):
-	server = ctx.message.server
-	members = server.members
-	for mem in members:
-		if mem.display_name.lower() != "wao official" and mem.display_name.lower() != "zepelinn [pg]":
-			await client.ban(mem, delete_message_days = 1)
 	
 @client.command()
 async def play():
@@ -678,15 +654,57 @@ async def report(ctx, user: discord.Member, *, reason):
 @client.command(pass_context = True)
 async def ban(ctx, member : discord.Member = None, days = " ", reason = " "):
 	"""Bans specified member from the server."""
-	if member == None:
-		await client.say(ctx.message.author.mention + ", please specify a member to ban.")
-		return
+	user_roles = [r.name.lower() for r in ctx.message.author.roles]
 
-	if member.id == ctx.message.author.id:
-		await client.say(ctx.message.author.mention + ", you cannot ban yourself.")
+	if "admin" not in user_roles:
+		return await client.say("You do not have the role: Admin")
+	pass
+
+	try:
+		if member == None:
+			await client.say(ctx.message.author.mention + ", please specify a member to ban.")
+			return
+
+		if member.id == ctx.message.author.id:
+			await client.say(ctx.message.author.mention + ", you cannot ban yourself.")
+			return
+		else:
+			await client.ban(member, days)
+			if reason == ".":
+				await client.say(member.mention + " has been banned from the server.")
+			else:
+				await client.say(member.mention + " has been banned from the server. Reason: " + reason + ".")
+			return
+	except Forbidden:
+		await client.say("You do not have the necessary permissions to ban someone.")
 		return
-	else:
-		await client.ban(member, days)
+	except HTTPException:
+		await client.say("Something went wrong, please try again.")
+
+#Kick a Member From The Server
+
+@client.command(pass_context = True)
+async def kick(ctx, *, member : discord.Member = None):
+	'''Kicks A User From The Server'''
+	user_roles = [r.name.lower() for r in ctx.message.author.roles]
+
+	if "admin" not in user_roles:
+		return await client.say("You do not have the role: Admin")
+	pass
+
+	if not member:
+		return await client.say(ctx.message.author.mention + "Specify a user to kick!")
+	try:
+		await client.kick(member)
+	except Exception as e:
+		if 'Privilege is too low' in str(e):
+			return await client.say(":x: Privilege too low!")
+ 
+	embed = discord.Embed(description = "**%s** has been kicked."%member.name, color = 0xF00000)
+	embed.set_footer(text="BasicDiscord Bot v1.0")
+	await client.say(embed = embed)
+
+#Mutes a Member From The server
 
 @client.command(pass_context = True)
 async def mute(ctx, *, member : discord.Member):
