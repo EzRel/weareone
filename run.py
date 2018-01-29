@@ -41,7 +41,7 @@ async def on_message(message):
 	#	if levelvalue % 250 == 0 and levelvalue != 0 and message.author.display_name != 'WAO Official':
 	#		await client.send_message(message.channel, "GG %s, ai avansat la **LEVEL %s**!"%(message.author.mention, int(levelvalue / 100)))
 	#	levelsdex[levelkey] = levelvalue
-	e#lse:
+	#else:
 	#	levelsdex.update({message.author.id : 0})
 
 	msgc = message.content.lower()
