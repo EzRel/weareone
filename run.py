@@ -203,7 +203,8 @@ async def memes(ctx, number = ""):
 	else:
 		rdnb = int(number)
 
-	await client.say("Ni aici un meme.")
+	messg = random.choice(["Ni aici un meme.", "MEMES = LIFE.", "Asta e meme-ul meu favorit!", "Uite un meme smec:"])
+	await client.say(messg)
 	print("Searching for memes...")
 
 	if rdnb == 1:
