@@ -21,7 +21,7 @@ async def on_ready():
 	print("Username: %s"%client.user.name)
 	print("ID: %s"%client.user.id)
 	print("----------------------")
-	await client.change_presence(game=discord.Game(name='Foloseste w.help!'))
+	await client.change_presence(game=discord.Game(name='Use w.help!'))
 	server = client.get_server('295959610043531264')
 
 @client.event
@@ -70,13 +70,13 @@ async def on_message(message):
 	
 	if canlink == 0:
 		if msgc.find("discord.gg/") != -1:
-			await client.send_message(message.channel, "Nu promova alte servere!")
+			await client.send_message(message.channel, "Server promotion is bannable!")
 			await client.delete_message(message)
 		elif msgc.find("http://") != -1 or msgc.find("https://") != -1:
-			await client.send_message(message.channel, "Nu trimite link-uri!")
+			await client.send_message(message.channel, "You don't have permissions to post links!")
 			await client.delete_message(message)
 		elif message.content.upper() != message.content.upper():
-			await client.send_message(message.channel, "\"%s\" ~ Nu spama caps lock!"%message.content.lower())
+			await client.send_message(message.channel, "\"%s\" ~ Don't spam Caps Lock!"%message.content.lower())
 			await client.delete_message(message)
 	if msgc.find("fuck") != -1 or msgc.find("shit") != -1 or msgc.find("pula") != -1 or msgc.find("pizda") != -1 or msgc.find("muie") != -1:
 		await client.send_message(message.channel, "Nu injura!")
@@ -86,14 +86,14 @@ async def on_message(message):
 async def on_member_join(member):
 	channel = discord.utils.get(member.server.channels, name="logs")
 	server = member.server
-	fmt = '**+** {0.mention} tocmai a intrat in comunitatea **WeAreOne**!'
+	fmt = '**+** {0.mention} just entered the **WeAreOne** community!'
 	await client.send_message(channel, fmt.format(member))
 
 @client.event
 async def on_member_remove(member):
 	channel = discord.utils.get(member.server.channels, name="logs")
 	server = member.server
-	fmt = '**-** {0.mention} a parasit comunitatea. :confused:'
+	fmt = '**-** {0.mention} left **WeAreOne**. :confused:'
 	await client.send_message(channel, fmt.format(member, server))
 
 @client.command()
@@ -102,12 +102,12 @@ async def ping():
 	pingtime = time.time()
 	pingms = await client.say("Pinging...")
 	ping = time.time() - pingtime
-	await client.edit_message(pingms, ":ping_pong:  Pong! A luat `%.01f secunde` !" % ping)
+	await client.edit_message(pingms, ":ping_pong:  Pong! It took `%.01f secunde` to respond!" % ping)
 	
 @client.command()
 async def website():
 	'''Informatii privind website-ul nostru!'''
-	await client.say("Intra pe http://waodiscord.000webhostapp.com !")
+	await client.say("**http://waodiscord.000webhostapp.com**")
 	
 @client.command(pass_context=True)
 async def cumpara(ctx, pid = ''):
@@ -129,25 +129,25 @@ async def cumpara(ctx, pid = ''):
 					for mem in members:
 						mem.display_name = mem.display_name.replace("[%s]"%currgtag, curr[1])
 				else:
-					itemspr = "%s\n    A APARUT O EROARE LA URMATORUL PRODUS: [ *Nu esti intr-un guild!* ]"%itemspr
+					itemspr = "%s\n    An error occured while buying your product: [ *You are not in a guild!* ]"%itemspr
 				itemspr = "%s\n    - Guild tag [%s] (10 LVL)"%(itemspr, curr[1])
 			elif curr[0] == "misc::custom_set_game":
 				currgame = curr[1]
 				await client.change_presence(game=discord.Game(name=currgame))
-				itemspr = "%s\n    - Status customizat (20 LVL)"%itemspr
+				itemspr = "%s\n    - Custom bot status (20 LVL)"%itemspr
 		#await client.say(pinfo)
-		tmsg = "%s, produsele tale au fost achizitionate cu succes!\n\n========\n:shopping_cart: Info:\n%s\n========"%(ctx.message.author.mention, itemspr)
-		embed = discord.Embed(title = "Achizitionare completa!", description = tmsg, color = 0xf1c40f)
+		tmsg = "%s, your products were successfully purchased!\n\n========\n:shopping_cart: Info:\n%s\n========"%(ctx.message.author.mention, itemspr)
+		embed = discord.Embed(title = "Purchase complete!", description = tmsg, color = 0xf1c40f)
 		await client.send_message(ctx.message.channel, embed = embed)
 	else:
-		await client.say("Comanda a fost interpretata gresit! `w.help cumpara`")
+		await client.say("Wrong usage of this command! Use `w.help cumpara` for more help and information.")
 	await client.delete_message(ctx.message)
 	
 @client.command(pass_context=True)
 async def levels(ctx, mode = '1'):
 	'''See the levels'''
 	if mode == '1':
-		await client.say("Esti %s | AS FOLLOWING:"%ctx.message.author.id)
+		await client.say("You're %s | AS FOLLOWING:"%ctx.message.author.id)
 		for key, value in levelsdex.items():
 			await client.say("%s => %s"%(key, value))
 	else:
@@ -164,12 +164,12 @@ async def levels(ctx, mode = '1'):
 @client.command()
 async def play():
 	'''Music!'''
-	await client.say(":tools: Lucram la comanda asta!")
+	await client.say(":tools: We're working on this command!")
 
 @client.command()
 async def online():
 	'''See if The Bot is online'''
-	await client.say("Sunt online! `w.help`")
+	await client.say("I'm online! Use `w.help`!")
 
 @client.command()
 async def animate():
@@ -203,7 +203,7 @@ async def memes(ctx, number = ""):
 	else:
 		rdnb = int(number)
 
-	messg = random.choice(["Ni aici un meme.", "MEMES = LIFE.", "Asta e meme-ul meu favorit!", "Uite un meme smec:"])
+	messg = random.choice(["Here you have a meme.", "MEMES = LIFE.", "This is my favorite meme!", "This is a nice meme:"])
 	await client.say(messg)
 	print("Searching for memes...")
 
