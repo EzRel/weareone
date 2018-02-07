@@ -570,6 +570,42 @@ async def guild(ctx, option, guildname = "", user: discord.Member = ""):
 	else:
 		await client.say("`w.guild %s` nu este o comanda recunoscuta!"%option)
 		await client.say("Incearca `w.guild {create|join|leave}`!")
+		
+@client.command(pass_context = True)   
+async def join(ctx, option):
+	'''Configureaza guild-ul in care esti'''
+	if option == 'en' or option == 'english' or option == 'england':
+		server = ctx.message.server
+		roles = server.roles
+		members = server.members
+		member = None
+		for mem in members:
+			if mem.id == ctx.message.author.id:
+				member = mem
+				break
+		for role in roles:
+			if role.name == "ENGLISH":
+				await client.add_roles(member, role)
+				await client.say("Added you to the `ENGLISH` section!")
+				break
+	elif option == 'ro' or option == 'romanian' or option == 'romania':
+		server = ctx.message.server
+		roles = server.roles
+		members = server.members
+		member = None
+		for mem in members:
+			if mem.id == ctx.message.author.id:
+				member = mem
+				break
+		for role in roles:
+			if role.name == "ROMANIAN":
+				await client.add_roles(member, role)
+				await client.say("Added you to the `ROMANIAN` section! Poti acum sa vorbesti in sectiunea de `ROMANA`")
+				break
+	elif option == '':
+		await client.say("The language argument is missing!")
+	else:
+		await client.say("We do not support this language yet!")
 
 @client.command(pass_context=True)
 async def warn(ctx, user="", reason="", mod="", n="", channel=""):
