@@ -404,7 +404,7 @@ async def tell(ctx, type, *, tmsg):
 @client.command(pass_context = True)
 async def poll(ctx, opt1 = "👍", opt2 = "👎", *, pmsg):
 	await client.delete_message(ctx.message)
-	await client.say("*Voteaza!*")
+	await client.say("*Vote!*")
 	rmsg = await client.say("%s"%pmsg)
 	await client.add_reaction(rmsg, opt1)
 	await client.add_reaction(rmsg, opt2)
@@ -413,7 +413,7 @@ async def poll(ctx, opt1 = "👍", opt2 = "👎", *, pmsg):
 @client.command(pass_context = True)
 async def request(ctx, opt1 = "👍", opt2 = "👎", *, pmsg):
 	await client.delete_message(ctx.message)
-	await client.say("*Voteaza!*")
+	await client.say("*New request!*")
 	rmsg = await client.say("%s"%pmsg)
 	await client.add_reaction(rmsg, opt1)
 	await client.add_reaction(rmsg, opt2)
