@@ -21,7 +21,7 @@ async def on_ready():
 	print("Username: %s"%client.user.name)
 	print("ID: %s"%client.user.id)
 	print("----------------------")
-	await client.change_presence(game=discord.Game(name='Use w.help!'))
+	await client.change_presence(game=discord.Game(name='cloudr, help'))
 	server = client.get_server('295959610043531264')
 
 @client.event
@@ -82,7 +82,7 @@ async def on_message(message):
 		await client.send_message(message.channel, "Nu injura!")
 		await client.delete_message(message)
 
-@client.event
+"""@client.event
 async def on_member_join(member):
 	channel = discord.utils.get(member.server.channels, name="logs")
 	server = member.server
@@ -94,7 +94,7 @@ async def on_member_remove(member):
 	channel = discord.utils.get(member.server.channels, name="logs")
 	server = member.server
 	fmt = '**-** {0.mention} left **WeAreOne**. :confused:'
-	await client.send_message(channel, fmt.format(member, server))
+	await client.send_message(channel, fmt.format(member, server))"""
 
 @client.command()
 async def ping():
@@ -104,7 +104,7 @@ async def ping():
 	ping = time.time() - pingtime
 	await client.edit_message(pingms, ":ping_pong:  Pong! It took `%.01f secunde` to respond!" % ping)
 	
-@client.command()
+"""@client.command()
 async def website():
 	'''Informatii privind website-ul nostru!'''
 	await client.say("**http://waodiscord.000webhostapp.com**")
@@ -159,7 +159,7 @@ async def levels(ctx, mode = '1'):
 				isvirgula = ","
 			lvlmsg = "%s%s '%s' : %s"%(lvlmsg, isvirgula, key, value)
 		lvlmsg = "%s}"%lvlmsg
-	await client.say(lvlmsg)
+	await client.say(lvlmsg)"""
 	
 @client.command()
 async def play():
@@ -169,7 +169,7 @@ async def play():
 @client.command()
 async def online():
 	'''See if The Bot is online'''
-	await client.say("I'm online! Use `w.help`!")
+	await client.say("UP! >> `cloudr, help`")
 
 @client.command()
 async def animate():
@@ -311,31 +311,6 @@ async def tellthenews(ctx, timestosay = "", interval = ""):
 		await client.say("**ANUNT >>** %s"%currmesg)
 		sleep(interval)
 
-"""@client.command()
-async def botinvite():
-	'''A Link To Invite This Bot To Your Server!'''
-	await client.say("Uite-te in dm's :wink:")
-	await client.whisper(link)"""
-
-@client.command()
-async def suntnou():
-	'''Esti nou? w.suntnou!'''
-	await client.say("Salut! Bine ai venit pe WeAreOne. Ti-am trimis pe privat toate informatiile de care ai nevoie!")
-	await client.whisper("Bine ai venit in comunitatea WeAreOne! Eu sunt @WAOGuilds#9280 , un bot special facut pentru server.")
-	await client.whisper("Regulile serverului se gasesc in INFO-SERVER > #rules !")
-	await client.whisper("Avem si un website, http://waodiscord.000webhostapp.com !")
-	await client.whisper("Daca ai nevoie de ajutorul meu, striga-ma cu `w.help` (Prefixul este `w.`) !")
-	await client.whisper("Distreaza-te!")
-
-#gets a server invite and pms it to the user who requested it  
-
-@client.command(pass_context=True)
-async def serverinvite(context):
-	"""Pm's A Invite Code (To The Server) To The User"""
-	invite = await client.create_invite(context.message.channel, max_uses = 0, max_age = 0)
-	await client.send_message(context.message.author,"Link-ul la server este {}! [NE]".format(invite.url))
-	await client.say("Uite-te in dm's :wink:")
-
 #Gets a List of Bans From The Server
 
 @client.command(pass_context = True)
@@ -429,8 +404,17 @@ async def poll(ctx, opt1 = "👍", opt2 = "👎", *, pmsg):
 	await client.add_reaction(rmsg, opt1)
 	await client.add_reaction(rmsg, opt2)
 	print("Un nou w.poll!")
+	
+@client.command(pass_context = True)
+async def request(ctx, opt1 = "👍", opt2 = "👎", *, pmsg):
+	await client.delete_message(ctx.message)
+	await client.say("*Voteaza!*")
+	rmsg = await client.say("%s"%pmsg)
+	await client.add_reaction(rmsg, opt1)
+	await client.add_reaction(rmsg, opt2)
+	print("Un nou w.poll!")
 
-@client.command(pass_context = True)   
+"""@client.command(pass_context = True)   
 async def rankcolor(ctx, colour):
 	'''Configureaza culoarea rank-ului tau! (MEMBERS ONLY)'''
 	server = ctx.message.server
@@ -605,7 +589,7 @@ async def join(ctx, option):
 	elif option == '':
 		await client.say("The language argument is missing!")
 	else:
-		await client.say("We do not support this language yet!")
+		await client.say("We do not support this language yet!")"""
 
 @client.command(pass_context=True)
 async def warn(ctx, user="", reason="", mod="", n="", channel=""):
