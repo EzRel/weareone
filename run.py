@@ -165,6 +165,11 @@ async def levels(ctx, mode = '1'):
 async def play():
 	'''Music!'''
 	await client.say(":tools: We're working on this command!")
+	
+@client.command()
+async def hello():
+	'''Hi there!'''
+	await client.say("Hi there! I'm Cloudr. Welcome to CloudsSquad!")
 
 @client.command()
 async def online():
