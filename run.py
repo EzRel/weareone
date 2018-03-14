@@ -79,7 +79,7 @@ async def on_message(message):
 			await client.send_message(message.channel, "\"%s\" ~ Don't spam Caps Lock!"%message.content.lower())
 			await client.delete_message(message)
 	if msgc.find("fuck") != -1 or msgc.find("shit") != -1 or msgc.find("pula") != -1 or msgc.find("pizda") != -1 or msgc.find("muie") != -1:
-		await client.send_message(message.channel, "Nu injura!")
+		await client.send_message(message.channel, "Don't swear!")
 		await client.delete_message(message)
 
 """@client.event
