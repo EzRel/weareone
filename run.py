@@ -10,7 +10,7 @@ from time import sleep
 from random import randint
 
 client = Bot(prefix)
-
+#
 @client.event
 async def on_ready():
 	print("----------------------")
