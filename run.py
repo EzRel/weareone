@@ -25,6 +25,23 @@ async def on_ready():
 async def on_message(message):
 	msgc = message.content.lower()
 	await client.process_commands(message)
+	
+	if msgc.startswith("g#"):
+		channels = server.channels
+		gcfound = 0
+		for chn in channels:
+			if chn.name == msgc[2:]:
+				gcfound = 1
+				cmg = client.send_message(chn, '%s' % message.author.id)
+				cmmgg = client.send_message(message.channel, '%s got mentioned on #%s!' % (message.author.id, msgc[2:]))
+				sleep(10)
+				await client.delete_message(cmg)
+				await client.delete_message(cmgg)
+				break
+		if gcfound == 0:
+			#message.server.id
+			csvg = await client.create_channel(message.server.id, "%s"%msgc[2:], type=discord.ChannelType.text)
+			client.send_message(csvg, 'Be the first to post on **#%s**' % msgc[2:])
 
 """@client.event
 async def on_member_join(member):
