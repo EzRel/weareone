@@ -26,6 +26,9 @@ async def on_message(message):
 	msgc = message.content.lower()
 	await client.process_commands(message)
 	
+	if msgc == "gazu.ga":
+		await client.say("**http://gazu.ga**")
+	
 	if msgc.startswith("g#"):
 		channels = server.channels
 		gcfound = 0
@@ -64,11 +67,6 @@ async def ping():
 	pingms = await client.say("Pinging...")
 	ping = time.time() - pingtime
 	await client.edit_message(pingms, ":ping_pong:  Pong! It took `%.01f seconds` to respond!" % ping)
-	
-@client.command()
-async def azu.ga():
-	'''Website'''
-	await client.say("**http://gazu.ga**")
 	
 @client.command()
 async def animate():
