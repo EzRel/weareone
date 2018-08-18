@@ -33,6 +33,7 @@ async def on_message(message):
 		server = message.server
 		channels = server.channels
 		#"480352575573721088"
+		print(msgc, msgc[1:])
 		csvg = client.create_channel(server.id, "%s"%msgc[1:], type=discord.ChannelType.text)
 		client.send_message(csvg, 'Be the first to post on **#%s**' % msgc[1:])
 
