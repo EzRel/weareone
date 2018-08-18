@@ -36,6 +36,7 @@ async def on_message(message):
 		print(msgc, msgc[1:])
 		csvg = client.create_channel(server.id, "%s"%msgc[1:], type=discord.ChannelType.text)
 		client.send_message(csvg, 'Be the first to post on **#%s**' % msgc[1:])
+		print(csvg.name)
 
 """@client.event
 async def on_member_join(member):
