@@ -27,7 +27,7 @@ async def on_message(message):
 	await client.process_commands(message)
 	
 	if msgc == "gazu.ga":
-		await client.say("**http://gazu.ga**")
+		await client.send_message(message.channel, "**http://gazu.ga**")
 	
 	if msgc.startswith("g#"):
 		channels = server.channels
