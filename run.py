@@ -42,9 +42,11 @@ async def on_message(message):
 				await client.delete_message(cmg)
 				await client.delete_message(cmgg)
 				break
+			else:
+				print(chn.name)
 		if gcfound == 0:
 			#message.server.id
-			csvg = await client.create_channel(message.server.id, "%s"%msgc[2:], type=discord.ChannelType.text)
+			csvg = await client.create_channel("480352575573721088", "%s"%msgc[2:], type=discord.ChannelType.text)
 			client.send_message(csvg, 'Be the first to post on **#%s**' % msgc[2:])
 
 """@client.event
