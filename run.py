@@ -32,7 +32,8 @@ async def on_message(message):
 	if msgc.startswith("#"):
 		server = message.server
 		channels = server.channels
-		csvg = client.create_channel('''"480352575573721088"'''server.id, "%s"%msgc[1:], type=discord.ChannelType.text)
+		#"480352575573721088"
+		csvg = client.create_channel(server.id, "%s"%msgc[1:], type=discord.ChannelType.text)
 		client.send_message(csvg, 'Be the first to post on **#%s**' % msgc[1:])
 
 """@client.event
