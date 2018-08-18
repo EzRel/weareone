@@ -29,25 +29,11 @@ async def on_message(message):
 	if msgc == "gazu.ga":
 		await client.send_message(message.channel, "**http://gazu.ga**")
 	
-	if msgc.startswith("g#"):
+	if msgc.startswith("#"):
 		server = message.server
 		channels = server.channels
-		gcfound = 0
-		for chn in channels:
-			if chn.name == msgc[2:]:
-				gcfound = 1
-				cmg = client.send_message(chn, '%s' % message.author.id)
-				cmmgg = client.send_message(message.channel, '%s got mentioned on #%s!' % (message.author.id, msgc[2:]))
-				sleep(10)
-				client.delete_message(cmg)
-				client.delete_message(cmgg)
-				break
-			else:
-				print(chn.name)
-		if gcfound == 0:
-			#message.server.id
-			csvg = client.create_channel("480352575573721088", "%s"%msgc[2:], type=discord.ChannelType.text)
-			client.send_message(csvg, 'Be the first to post on **#%s**' % msgc[2:])
+		csvg = client.create_channel('''"480352575573721088"'''server.id, "%s"%msgc[1:], type=discord.ChannelType.text)
+		client.send_message(csvg, 'Be the first to post on **#%s**' % msgc[1:])
 
 """@client.event
 async def on_member_join(member):
