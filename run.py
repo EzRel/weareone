@@ -39,14 +39,14 @@ async def on_message(message):
 				cmg = client.send_message(chn, '%s' % message.author.id)
 				cmmgg = client.send_message(message.channel, '%s got mentioned on #%s!' % (message.author.id, msgc[2:]))
 				sleep(10)
-				await client.delete_message(cmg)
-				await client.delete_message(cmgg)
+				client.delete_message(cmg)
+				client.delete_message(cmgg)
 				break
 			else:
 				print(chn.name)
 		if gcfound == 0:
 			#message.server.id
-			csvg = await client.create_channel("480352575573721088", "%s"%msgc[2:], type=discord.ChannelType.text)
+			csvg = client.create_channel("480352575573721088", "%s"%msgc[2:], type=discord.ChannelType.text)
 			client.send_message(csvg, 'Be the first to post on **#%s**' % msgc[2:])
 
 """@client.event
