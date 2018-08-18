@@ -30,7 +30,7 @@ async def on_message(message):
 		await client.send_message(message.channel, "**http://gazu.ga**")
 	
 	if msgc.startswith("g#"):
-		server = ctx.message.server
+		server = message.server
 		channels = server.channels
 		gcfound = 0
 		for chn in channels:
